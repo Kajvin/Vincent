@@ -92,6 +92,7 @@ class CVincent implements ISingleton {
 
     // Include the global functions.php and the functions.php that are part of the theme
     $wi = &$this;
+	include(VINCENT_INSTALL_PATH . '/themes/functions.php');
     $functionsPath = "{$themePath}/functions.php";
     if(is_file($functionsPath)) {
       include $functionsPath;
