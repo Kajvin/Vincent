@@ -1,8 +1,8 @@
 <?php
 /**
- * Main class for Lydia, holds everything.
+ * Main class for Vincent, holds everything.
  *
- * @package LydiaCore
+ * @package VincentCore
  */
 class CVincent implements ISingleton {
 
