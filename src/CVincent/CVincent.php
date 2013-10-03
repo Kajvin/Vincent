@@ -1,8 +1,8 @@
 <?php
 /**
- * Main class for Vincent, holds everything.
+ * Main class for Lydia, holds everything.
  *
- * @package VincentCore
+ * @package LydiaCore
  */
 class CVincent implements ISingleton {
 
@@ -12,7 +12,7 @@ class CVincent implements ISingleton {
    * Constructor
    */
   protected function __construct() {
-    // include the site specific config.php and create a ref to $ly to be used by config.php
+    // include the site specific config.php and create a ref to $wi to be used by config.php
     $wi = &$this;
     require(VINCENT_SITE_PATH.'/config.php');
   }
@@ -35,7 +35,7 @@ class CVincent implements ISingleton {
    */
   public function FrontControllerRoute() {
     // Take current url and divide it in controller, method and parameters
-    $this->request = new CRequest();
+    $this->request = new CRequest($this->config['url_type']);
     $this->request->Init($this->config['base_url']);
     $controller = $this->request->controller;
     $method     = $this->request->method;
@@ -53,7 +53,7 @@ class CVincent implements ISingleton {
       $classExists         = class_exists($className);
     }
     
-     // Check if controller has a callable method in the controller class, if then call it
+    // Check if controller has a callable method in the controller class, if then call it
     if($controllerExists && $controllerEnabled && $classExists) {
       $rc = new ReflectionClass($className);
       if($rc->implementsInterface('IController')) {
@@ -78,21 +78,21 @@ class CVincent implements ISingleton {
   }
   
   
-     /**
-    * ThemeEngineRender, renders the reply of the request.
-    */
+  /**
+   * ThemeEngineRender, renders the reply of the request to HTML or whatever.
+   */
   public function ThemeEngineRender() {
     // Get the paths and settings for the theme
-    $themeName    = $this->config['theme']['name'];
-    $themePath    = VINCENT_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl      = "themes/{$themeName}";
+    $themeName   = $this->config['theme']['name'];
+    $themePath   = VINCENT_INSTALL_PATH . "/themes/{$themeName}";
+    $themeUrl    = $this->request->base_url . "themes/{$themeName}";
     
-    // Add stylesheet path to the $ly->data array
+    // Add stylesheet path to the $wi->data array
     $this->data['stylesheet'] = "{$themeUrl}/style.css";
 
     // Include the global functions.php and the functions.php that are part of the theme
     $wi = &$this;
-	include(VINCENT_INSTALL_PATH . '/themes/functions.php');
+    include(VINCENT_INSTALL_PATH . '/themes/functions.php');
     $functionsPath = "{$themePath}/functions.php";
     if(is_file($functionsPath)) {
       include $functionsPath;
@@ -102,4 +102,5 @@ class CVincent implements ISingleton {
     extract($this->data);      
     include("{$themePath}/default.tpl.php");
   }
+
 }
