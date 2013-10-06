@@ -57,7 +57,8 @@ class CVincent implements ISingleton {
     if($controllerExists && $controllerEnabled && $classExists) {
       $rc = new ReflectionClass($className);
       if($rc->implementsInterface('IController')) {
-        if($rc->hasMethod($method)) {
+        $formattedMethod = str_replace(array('_', '-'), '', $method);
+		if($rc->hasMethod($method)) {
           $controllerObj = $rc->newInstance();
           $methodObj = $rc->getMethod($method);
           if($methodObj->isPublic()) {
