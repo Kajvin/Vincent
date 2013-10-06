@@ -16,15 +16,15 @@ class CCIndex implements IController {
 * Create a method that shows the menu, same for all methods
 */
 private function Menu() {  
-$wi = CVincent::Instance();
-$menu = array('index', 'index/index', 'developer', 'developer/index', 'developer/links');
-
-$html = null;
-foreach($menu as $val) {
-$html .= "<li><a href='" . $wi->request->CreateUrl($val) . "'>$val</a>";
-}  
+	$wi = CVincent::Instance();
+	$menu = array('index', 'index/index', 'developer', 'developer/index', 'developer/links');
+	
+	$html = null;
+	foreach($menu as $val) {
+	$html .= "<li><a href='" . $wi->request->CreateUrl($val) . "'>$val</a>";
+	}  
     $wi->data['title'] = "The Index Controller";
-	 $wi->data['main'] = <<<EOD
+	$wi->data['main'] = <<<EOD
 <h1>The Index Controller</h1>
 <p>This is what you can do for now:</p>
 <ul>
