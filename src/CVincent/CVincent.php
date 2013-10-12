@@ -1,8 +1,8 @@
 <?php
 /**
- * Main class for Lydia, holds everything.
+ * Main class for Vincent, holds everything.
  *
- * @package LydiaCore
+ * @package VincentCore
  */
 class CVincent implements ISingleton {
 
@@ -15,6 +15,13 @@ class CVincent implements ISingleton {
 		// include the site specific config.php and create a ref to $wi to be used by config.php
 		$wi = &$this;
     require(VINCENT_SITE_PATH.'/config.php');
+
+		// Start a named session
+		session_name($this->config['session_name']);
+		session_start();
+
+		// Set default date/time-zone
+		date_default_timezone_set($this->config['timezone']);
   }
   
   

@@ -6,7 +6,12 @@
 /**
  * Add static entries in the template file. 
  */
-$wi->data['header'] = '<h1>Header: Vincent</h1>';
+$wi->data['header'] = 'Vincent';
+$wi->data['slogan'] = 'A PHP-based MVC-inspired CMF';
+$wi->data['favicon']      = theme_url('logga_phpmvh_icon.png');
+$wi->data['logo']         = theme_url('logga_phpmvh_thumb.png');
+$wi->data['logo_width']   = 60;
+$wi->data['logo_height']  = 70;
 $wi->data['footer'] =<<<EOD
 <p>Footer: &copy; Vincent by Kajvin (rowe12@student.bth.se)</p>
 

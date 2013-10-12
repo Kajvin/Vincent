@@ -12,9 +12,15 @@ ini_set('display_errors', 1);
 
 
 /**
+ * Set database(s).
+ */
+$wi->config['database'][0]['dsn'] = 'sqlite:' . VINCENT_SITE_PATH . '/data/.ht.sqlite';
+
+
+/**
  * Set what to show as debug or developer information in the get_debug() theme helper.
  */
-$wi->config['debug']['display-lydia'] = true;
+$wi->config['debug']['display-lydia'] = false;
 
 
 /**
@@ -26,25 +32,30 @@ $wi->config['debug']['display-lydia'] = true;
  */
 $wi->config['url_type'] = 1;
 
+
 /**
  * Set a base_url to use another than the default calculated
  */
 $wi->config['base_url'] = null;
+
 
 /**
  * Define session name
  */
 $wi->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
 
+
 /**
  * Define server timezone
  */
 $wi->config['timezone'] = 'Europe/Stockholm';
 
+
 /**
  * Define internal character encoding
  */
 $wi->config['character_encoding'] = 'UTF-8';
+
 
 /**
  * Define language
@@ -58,12 +69,13 @@ $wi->config['language'] = 'en';
  * The array-key is matched against the url, for example: 
  * the url 'developer/dump' would instantiate the controller with the key "developer", that is 
  * CCDeveloper and call the method "dump" in that class. This process is managed in:
- * $ly->FrontControllerRoute();
+ * $wi->FrontControllerRoute();
  * which is called in the frontcontroller phase from index.php.
  */
 $wi->config['controllers'] = array(
   'index'     => array('enabled' => true,'class' => 'CCIndex'),
   'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
+  'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
 );
 
 /**
