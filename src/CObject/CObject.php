@@ -6,9 +6,14 @@
 */
 class CObject {
 
+   /**
+    * Members
+    */
    public $config;
    public $request;
    public $data;
+   public $db;
+   
 
    /**
     * Constructor
@@ -18,6 +23,7 @@ class CObject {
     $this->config   = &$wi->config;
     $this->request  = &$wi->request;
     $this->data     = &$wi->data;
+    $this->db       = &$wi->db;
   }
 
 }

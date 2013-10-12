@@ -11,8 +11,14 @@
 function get_debug() {
   $wi = CVincent::Instance();  
   $html = null;
-  if(isset($wi->config['debug']['display-vincent']) && $wi->config['debug']['display-vincent']) {
-    $html = "<hr><h3>Debuginformation</h3><p>The content of CVincent:</p><pre>" . htmlent(print_r($wi, true)) . "</pre>";
+  if(isset($wi->config['debug']['db-num-queries']) && $wi->config['debug']['db-num-queries'] && isset($wi->db)) {
+    $html .= "<p>Database made " . $wi->db->GetNumQueries() . " queries.</p>";
+  }    
+  if(isset($wi->config['debug']['db-queries']) && $wi->config['debug']['db-queries'] && isset($wi->db)) {
+    $html .= "<p>Database made the following queries.</p><pre>" . implode('<br/><br/>', $wi->db->GetQueries()) . "</pre>";
+  }    
+  if(isset($wi->config['debug']['lydia']) && $wi->config['debug']['lydia']) {
+    $html .= "<hr><h3>Debuginformation</h3><p>The content of CVincent:</p><pre>" . htmlent(print_r($wi, true)) . "</pre>";
   }    
   return $html;
 }
