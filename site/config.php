@@ -14,7 +14,9 @@ ini_set('display_errors', 1);
 /**
  * Set what to show as debug or developer information in the get_debug() theme helper.
  */
-$wi->config['debug']['lydia'] = false;
+$wi->config['debug']['vincent'] = false;
+$wi->config['debug']['session'] = false;
+$wi->config['debug']['timer'] = true;
 $wi->config['debug']['db-num-queries'] = true;
 $wi->config['debug']['db-queries'] = true;
 
@@ -45,6 +47,7 @@ $wi->config['base_url'] = null;
  * Define session name
  */
 $wi->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
+$wi->config['session_key']  = 'vincent';
 
 
 /**
