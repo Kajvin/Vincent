@@ -6,52 +6,51 @@
  */
 class CSession {
 
-	/**
-	 * Members
-	 */
-	private $key;
-	private $data = array();
-	private $flash = null;
+        /**
+         * Members
+         */
+        private $key;
+        private $data = array();
+        private $flash = null;
+        
 
-
-	/**
-	 * Constructor
-	 */
-	public function __construct($key) {
+        /**
+         * Constructor
+         */
+        public function __construct($key) {
     $this->key = $key;
   }
 
 
-	/**
-	 * Set values
-	 */
-	public function __set($key, $value) {
+        /**
+         * Set values
+         */
+        public function __set($key, $value) {
     $this->data[$key] = $value;
   }
 
 
-	/**
-	 * Get values
-	 */
-	public function __get($key) {
+        /**
+         * Get values
+         */
+        public function __get($key) {
     return isset($this->data[$key]) ? $this->data[$key] : null;
   }
 
 
   /**
-   * Set flash values, to be remembered one page request
+   * Get, Set or Unset the authenticated user
    */
-  public function SetFlash($key, $value) {
-    $this->data['flash'][$key] = $value;
-  }
+  public function SetAuthenticatedUser($profile) { $this->data['authenticated_user'] = $profile; }
+  public function UnsetAuthenticatedUser() { unset($this->data['authenticated_user']); }
+  public function GetAuthenticatedUser() { return $this->authenticated_user; }
 
 
-  /**
-   * Get flash values, if any.
+   /**
+   * Get or Set flash values, to be remembered one page request
    */
-  public function GetFlash($key) {
-    return isset($this->flash[$key]) ? $this->flash[$key] : null;
-  }
+  public function SetFlash($key, $value) { $this->data['flash'][$key] = $value; }
+  public function GetFlash($key) { return isset($this->flash[$key]) ? $this->flash[$key] : null; }
 
 
   /**
@@ -65,12 +64,12 @@ class CSession {
   }
 
 
-	/**
-	 * Get messages, if any. Each message is composed of a key and value. Use the key for styling.
-	 *
-	 * @returns array of messages. Each array-item contains a key and value.
-	 */
-	public function GetMessages() {
+        /**
+         * Get messages, if any. Each message is composed of a key and value. Use the key for styling.
+         *
+         * @returns array of messages. Each array-item contains a key and value.
+         */
+        public function GetMessages() {
     return isset($this->flash['messages']) ? $this->flash['messages'] : null;
   }
 
