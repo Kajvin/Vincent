@@ -1,0 +1,3 @@
+Vincent, the theme directory
+=====================================
+More text later...................
