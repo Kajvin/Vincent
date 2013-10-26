@@ -6,68 +6,68 @@
  */
 class CVincent implements ISingleton {
 
-	/**
-	 * Members
-	 */
-	private static $instance = null;
-	public $config = array();
-	public $request;
-	public $data;
-	public $db;
-	public $views;
-	public $session;
-	public $user;
-	public $timer = array();
+        /**
+         * Members
+         */
+        private static $instance = null;
+        public $config = array();
+        public $request;
+        public $data;
+        public $db;
+        public $views;
+        public $session;
+        public $user;
+        public $timer = array();
+        
+        
+        /**
+         * Constructor
+         */
+        protected function __construct() {
+                // time page generation
+                $this->timer['first'] = microtime(true); 
 
-
-	/**
-	 * Constructor
-	 */
-	protected function __construct() {
-		// time page generation
-		$this->timer['first'] = microtime(true); 
-
-		// include the site specific config.php and create a ref to $wi to be used by config.php
-		$wi = &$this;
+                // include the site specific config.php and create a ref to $wi to be used by config.php
+                $wi = &$this;
     require(VINCENT_SITE_PATH.'/config.php');
 
-		// Start a named session
-		session_name($this->config['session_name']);
-		session_start();
-		$this->session = new CSession($this->config['session_key']);
-		$this->session->PopulateFromSession();
+                // Start a named session
+                session_name($this->config['session_name']);
+                session_start();
+                $this->session = new CSession($this->config['session_key']);
+                $this->session->PopulateFromSession();
+                
+                // Set default date/time-zone
+                date_default_timezone_set($this->config['timezone']);
+                
+                // Create a database object.
+                if(isset($this->config['database'][0]['dsn'])) {
+                  $this->db = new CMDatabase($this->config['database'][0]['dsn']);
+          }
+          
+          // Create a container for all views and theme data
+          $this->views = new CViewContainer();
 
-		// Set default date/time-zone
-		date_default_timezone_set($this->config['timezone']);
-
-		// Create a database object.
-		if(isset($this->config['database'][0]['dsn'])) {
-  		$this->db = new CMDatabase($this->config['database'][0]['dsn']);
-  	}
-  	
-  	// Create a container for all views and theme data
-	$this->views = new CViewContainer();
-	
-	// Create a object for the user
-	$this->user = new CMUser($this);
+          // Create a object for the user
+          $this->user = new CMUser($this);
   }
   
   
   /**
-	 * Singleton pattern. Get the instance of the latest created object or create a new one. 
-	 * @return CVincent The instance of this class.
-	 */
-	public static function Instance() {
-		if(self::$instance == null) {
-			self::$instance = new CVincent();
-		}
-		return self::$instance;
-	}
+         * Singleton pattern. Get the instance of the latest created object or create a new one. 
+         * @return CVincent The instance of this class.
+         */
+        public static function Instance() {
+                if(self::$instance == null) {
+                        self::$instance = new CVincent();
+                }
+                return self::$instance;
+        }
+        
 
-
-	/**
-	 * Frontcontroller, check url and route to controllers.
-	 */
+        /**
+         * Frontcontroller, check url and route to controllers.
+         */
   public function FrontControllerRoute() {
     // Take current url and divide it in controller, method and parameters
     $this->request = new CRequest($this->config['url_type']);
@@ -77,15 +77,15 @@ class CVincent implements ISingleton {
     $arguments  = $this->request->arguments;
     
     // Is the controller enabled in config.php?
-    $controllerExists 	= isset($this->config['controllers'][$controller]);
-    $controllerEnabled 	= false;
-    $className			    = false;
-    $classExists 		    = false;
+    $controllerExists         = isset($this->config['controllers'][$controller]);
+    $controllerEnabled         = false;
+    $className                            = false;
+    $classExists                     = false;
 
     if($controllerExists) {
-      $controllerEnabled 	= ($this->config['controllers'][$controller]['enabled'] == true);
-      $className					= $this->config['controllers'][$controller]['class'];
-      $classExists 		    = class_exists($className);
+      $controllerEnabled         = ($this->config['controllers'][$controller]['enabled'] == true);
+      $className                                        = $this->config['controllers'][$controller]['class'];
+      $classExists                     = class_exists($className);
     }
     
     // Check if controller has a callable method in the controller class, if then call it
@@ -114,9 +114,9 @@ class CVincent implements ISingleton {
   }
   
   
-	/**
-	 * ThemeEngineRender, renders the reply of the request to HTML or whatever.
-	 */
+        /**
+         * ThemeEngineRender, renders the reply of the request to HTML or whatever.
+         */
   public function ThemeEngineRender() {
     // Save to session before output anything
     $this->session->StoreInSession();
@@ -127,9 +127,9 @@ class CVincent implements ISingleton {
     }
     
     // Get the paths and settings for the theme
-    $themeName 	= $this->config['theme']['name'];
-    $themePath 	= VINCENT_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl		= $this->request->base_url . "themes/{$themeName}";
+    $themeName         = $this->config['theme']['name'];
+    $themePath         = VINCENT_INSTALL_PATH . "/themes/{$themeName}";
+    $themeUrl                = $this->request->base_url . "themes/{$themeName}";
     
     // Add stylesheet path to the $wi->data array
     $this->data['stylesheet'] = "{$themeUrl}/style.css";

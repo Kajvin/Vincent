@@ -66,9 +66,9 @@ function get_messages_from_session() {
  */
 function login_menu() {
   $wi = CVincent::Instance();
-  if($wi->user->IsAuthenticated()) {
-    $items = "<a href='" . create_url('user/profile') . "'>" . $wi->user->GetAcronym() . "</a> ";
-    if($wi->user->IsAdministrator()) {
+  if($wi->user['isAuthenticated']) {
+    $items = "<a href='" . create_url('user/profile') . "'>" . $wi->user['acronym'] . "</a> ";
+    if($wi->user['hasRoleAdministrator']) {
       $items .= "<a href='" . create_url('acp') . "'>acp</a> ";
     }
     $items .= "<a href='" . create_url('user/logout') . "'>logout</a> ";
