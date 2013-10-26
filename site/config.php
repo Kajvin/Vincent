@@ -44,9 +44,15 @@ $wi->config['base_url'] = null;
 
 
 /**
+ * How to hash password of new users, choose from: plain, md5salt, md5, sha1salt, sha1.
+ */
+$wi->config['hashing_algorithm'] = 'sha1salt';
+
+
+/**
  * Define session name
  */
-$wi->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
+$wi->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
 $wi->config['session_key']  = 'vincent';
 
 
@@ -82,7 +88,7 @@ $wi->config['controllers'] = array(
   'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),
-  'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),	
+  'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
 );
 
 /**
