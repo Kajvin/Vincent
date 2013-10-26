@@ -67,7 +67,7 @@ function get_messages_from_session() {
 function login_menu() {
   $wi = CVincent::Instance();
   if($wi->user['isAuthenticated']) {
-    $items = "<a href='" . create_url('user/profile') . "'>" . $wi->user['acronym'] . "</a> ";
+     $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''> " . $wi->user['acronym'] . "</a> ";
     if($wi->user['hasRoleAdministrator']) {
       $items .= "<a href='" . create_url('acp') . "'>acp</a> ";
     }
@@ -76,6 +76,14 @@ function login_menu() {
     $items = "<a href='" . create_url('user/login') . "'>login</a> ";
   }
   return "<nav>$items</nav>";
+}
+
+
+/**
+* Get a gravatar based on the user's email.
+*/
+function get_gravatar($size=null) {
+  return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim(CVincent::Instance()->user['email']))) . '.jpg?' . ($size ? "s=$size" : null);
 }
 
 
