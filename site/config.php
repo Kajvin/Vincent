@@ -50,6 +50,12 @@ $wi->config['hashing_algorithm'] = 'sha1salt';
 
 
 /**
+ * Allow or disallow creation of new user accounts.
+ */
+$wi->config['create_new_users'] = true;
+
+
+/**
  * Define session name
  */
 $wi->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
