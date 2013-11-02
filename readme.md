@@ -1,4 +1,6 @@
 ====================================================
-VINCENT MVC-Project DBWEBB/PHPMVH Fall semester 2013
+VINCENT MVC-Project DBWEBB/PHPMVH Fall semester 2013 
 
-My first MVC-Project still in the beginning!
+Credits to mosbth for original code LYDIA
+
+My first MVC-Project as a student on BTH!
