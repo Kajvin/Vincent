@@ -145,22 +145,45 @@ class CMContent extends CObject implements IHasSQL, ArrayAccess {
   }
   
   
+  
   /**
+   * Get a list of supported textfilters.
+   *
+   * @return array with list of supported filters.
+   */
+  public static function SupportedFilters() {
+    return array(
+      'plain' => t('Convert http://webb.com/ to clickable links. Convert newline to <br />.'),
+      'bbcode' => t('Support bbcode. Convert newline to <br />.'),
+      'htmlpurify' => t('Treat data as HTML and use HTMLPurify to filter content. Convert newline to <br />.'),
+      'markdown' => t('Support Markdown-syntax together with Typographer (SmartyPants).'),
+      'markdownx' => t('Support extended Markdown-syntax together with Typographer (SmartyPants). Converts links, shorttags'),
+    );
+  }
+  
+  
+ /**
    * Filter content according to a filter.
    *
    * @param $data string of text to filter and format according its filter settings.
-   * @returns string with the filtered data.
+   * @return string with the filtered data.
    */
   public static function Filter($data, $filter) {
+    //CVincent::Instance()->log->Timestamp(__CLASS__, __METHOD__, $filter);
+
     switch($filter) {
-      case 'htmlpurify': $data = nl2br(CHTMLPurifier::Purify($data)); break;
-      case 'bbcode': $data = nl2br(bbcode2html(htmlEnt($data))); break;
+      /*case 'php': $data = nl2br(makeClickable(eval('?>'.$data))); break;
+      case 'html': $data = nl2br(makeClickable($data)); break;*/
+      case 'markdowny':   $data = CTextFilter::Typographer(CTextFilter::MarkdownExtra(CTextFilter::ShortTags($data))); break;
+      case 'markdownx':   $data = CTextFilter::MakeClickable(CTextFilter::Typographer(CTextFilter::MarkdownExtra(CTextFilter::ShortTags($data)))); break;
+      case 'markdown':    $data = CTextFilter::Typographer(CTextFilter::Markdown($data)); break;
+      case 'htmlpurify':  $data = nl2br(CTextFilter::Purify($data)); break;
+      case 'bbcode':      $data = nl2br(CTextFilter::Bbcode2HTML(htmlEnt($data))); break;
       case 'plain': 
-      default: $data = nl2br(makeClickable(htmlEnt($data))); break;
+      default: $data = nl2br(CTextFilter::MakeClickable(htmlEnt($data))); break;
     }
     return $data;
   }
-  
   
   /**
    * Get the filtered content.
@@ -170,6 +193,5 @@ class CMContent extends CObject implements IHasSQL, ArrayAccess {
   public function GetFilteredData() {
     return $this->Filter($this['data'], $this['filter']);
   }
-  
   
 }
