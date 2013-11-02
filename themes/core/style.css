@@ -118,6 +118,8 @@ label{font-size:smaller;}
 .validation-message{color:red;font-size:smaller;}
 .form-action-link{font-size:smaller;}
 
+.content-edit input[type=text]{width:30em;}
+.content-edit textarea{width:40em;height:15em;}
 
 /**
  * User feedback message wrappers.
@@ -138,3 +140,4 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 /**
  * Misc
  */
+ .smaller-text{font-size:smaller;}

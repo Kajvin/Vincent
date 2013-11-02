@@ -1,7 +1,7 @@
 RewriteEngine on
 #nocase|NC    Makes the pattern comparison case-insensitive. details ...
 #last|L    Stop the rewriting process immediately and don't apply any more rules. Especially note caveats for per-directory and .htaccess context (see also the END flag). details ...
-#Rewritebase /~rowe12/vincent3/
+#Rewritebase /~rowe12/vincent4/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule (.*) index.php/$1 [NC,L]
