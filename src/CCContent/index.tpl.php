@@ -18,3 +18,13 @@
   <li><a href='<?=create_url('content/create')?>'>Create new content</a>
   <li><a href='<?=create_url('blog')?>'>View as blog</a>
 </ul>
+
+<h2>Filters</h2>
+<p>The following filters is suported:</p>
+<ul>
+	<li>plain: Convert http://webb.com/ to clickable links. Convert newline to &lt;br /&gt;</li>
+    <li>bbcode: Convert newline to &lt;/br&gt;</li>
+    <li>htmlpurify: Treat data as HTML and use HTMLPurify to filter content. Convert newline to &lt;/br&gt;</li>
+    <li>markdowny: Markdown-syntax together with Typographer (SmartyPants)</li>
+    <li>markdownx: extended Markdown-syntax together with Typographer (SmartyPants). Converts links, shorttags</li>
+</ul>

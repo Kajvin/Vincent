@@ -1,24 +1,31 @@
 /** 
- * Description: Core theme for Vincent
+ * Description: Grid theme for Vincent based on less, lessphp and semantic.gs.
  */
+
+/**
+ * Settings
+ */
+@bgcolor1: #eee;
+@bgcolor2: #fff;
+@color: #333;
+@font: 1em Verdana, Arial, Helvetica, sans-serif;
+
 
 /**
  * Structure
  */
-html{background-color:#eee;}
-body{margin:0;padding:0;color:#333;background-color:#fff;
-  font: 1em Verdana, Arial, Helvetica, sans-serif;}
+html{background-color:@bgcolor1;}
+body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;}
 
 #wrap-header {}
 #wrap-main {}
-#wrap-footer {border-top:1px solid #ccc;background-color:#eee;}
-
+#wrap-footer {border-top:1px solid #ccc;background-color:@bgcolor1;}
+/*Default header*/
 /*#header,
 #main,
 #footer {margin:0 auto;width:970px;padding:8px;}
 #main,
 #footer {margin-bottom:16px;}*/
-
 
 /*Stylad header default above in the comment*/
 #header,
@@ -27,7 +34,7 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
   margin:8px auto;
   padding:1em;
   width:970px;
-  background-color:#fff;
+  background-color:@bgcolor2;
   border:1px solid #999;
   border-radius: 10px;
 } 
@@ -35,19 +42,18 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 #header,
 #main {background-color:#fff;}
 #main {min-height:300px;}
-#footer {font-size:0.80em;color:#666;background-color:#eee;}
+#footer {font-size:0.80em;color:#666;background-color:@bgcolor1;}
 
 
 /**
  * Login menu
  */
-#login-menu{
-	float: right;
-	font-size: smaller;
-	}
-#login-menu img.gravatar{vertical-align:middle;}
-#login-menu a{text-decoration:none;}
-#login-menu a:hover{text-decoration:underline;}
+#login-menu{float:right;font-size:smaller;
+  img.gravatar{vertical-align:middle;}
+  a{text-decoration:none;}
+  a:hover{text-decoration:underline;}
+}
+
 
 /**
  * Banner
@@ -82,6 +88,7 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 	font-style: italic;
 	color: #F0F611;
 	padding-right: 0px;
+	text-shadow: #ccc 4px -4px 4px;
 }
 .site-title  {font-size:4em;font-weight:bold;}
 .site-slogan {font-size:1.5em;}
@@ -93,12 +100,14 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 /**
  * Links
  */
-a         {color:inherit;}
-a:link    {}
-a:visited {}
-a:hover,
-a:focus   {text-decoration:none;color:#5C0A0A;}
-a:active  {}
+.hover(){text-decoration:none;color:#5C0A0A;}
+a{color:inherit;
+  &:link{}
+  &:visited{}
+  &:hover{.hover()}
+  &:focus{.hover()}
+  &:active{}
+}
 
 
 /**
@@ -111,15 +120,18 @@ h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
 /**
  * Forms
  */
-input{font:inherit;}
+input,textarea{font:inherit;}
 input[readonly]{color:#666;}
 label{font-size:smaller;}
 .validation-failed{border:2px solid red;}
 .validation-message{color:red;font-size:smaller;}
 .form-action-link{font-size:smaller;}
 
-.content-edit input[type=text]{width:30em;}
-.content-edit textarea{width:40em;height:15em;}
+.content-edit{
+  input[type=text]{width:30em;}
+  textarea{width:40em;height:15em;}
+}
+
 
 /**
  * User feedback message wrappers.
@@ -140,5 +152,5 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 /**
  * Misc
  */
- .smaller-text{font-size:smaller;}
- .silent{color:#999;}
+.smaller-text{font-size:smaller;}
+.silent{color:#999;}

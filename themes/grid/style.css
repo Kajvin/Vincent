@@ -12,15 +12,16 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 #wrap-header {}
 #wrap-main {}
 #wrap-footer {border-top:1px solid #ccc;background-color:#eee;}
+/*Default header*/
 
-/*#header,
+#header,
 #main,
 #footer {margin:0 auto;width:970px;padding:8px;}
 #main,
-#footer {margin-bottom:16px;}*/
+#footer {margin-bottom:16px;}
 
 
-/*Stylad header default above in the comment*/
+/*Stylad header default above in the comment
 #header,
 #main,
 #footer {
@@ -31,7 +32,7 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
   border:1px solid #999;
   border-radius: 10px;
 } 
-
+*/
 #header,
 #main {background-color:#fff;}
 #main {min-height:300px;}
@@ -52,8 +53,8 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 /**
  * Banner
  */
-/*#banner {display:table;margin-bottom:10px;}*/
-#banner {
+#banner {display:table;margin-bottom:10px;}
+/*#banner {
 	display: table;
 	margin-bottom: 10px;
 	margin-top:20px;
@@ -61,7 +62,7 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 	background-image: linear-gradient(116deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
 	color: #DFDE15;
 	padding-right: 51px;
- }
+ }*/
 .site-logo,
 .site-title,
 .site-slogan {display:table-cell;width:inherit;vertical-align:middle;text-align:left;}
@@ -82,6 +83,7 @@ body{margin:0;padding:0;color:#333;background-color:#fff;
 	font-style: italic;
 	color: #F0F611;
 	padding-right: 0px;
+	text-shadow: #ccc 4px -4px 4px;
 }
 .site-title  {font-size:4em;font-weight:bold;}
 .site-slogan {font-size:1.5em;}
@@ -111,7 +113,7 @@ h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
 /**
  * Forms
  */
-input{font:inherit;}
+input,textarea{font:inherit;}
 input[readonly]{color:#666;}
 label{font-size:smaller;}
 .validation-failed{border:2px solid red;}

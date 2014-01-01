@@ -63,7 +63,7 @@ $wi->config['session_key']  = 'vincent';
 
 
 /**
- * Define server timezone
+  * Define default server timezone when displaying date and times to the user. All internals are still UTC.
  */
 $wi->config['timezone'] = 'Europe/Stockholm';
 
@@ -92,6 +92,7 @@ $wi->config['language'] = 'en';
 $wi->config['controllers'] = array(
   'index'     => array('enabled' => true,'class' => 'CCIndex'),
   'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
+  'theme'     => array('enabled' => true,'class' => 'CCTheme'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'content'   => array('enabled' => true,'class' => 'CCContent'),
   'blog'      => array('enabled' => true,'class' => 'CCBlog'),
@@ -100,10 +101,11 @@ $wi->config['controllers'] = array(
   'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
 );
 
+
 /**
  * Settings for the theme.
  */
 $wi->config['theme'] = array(
-  // The name of the theme in the theme directory
-  'name'    => 'core', 
+  'name'    	=> 'grid',		 //The name of the theme in theme directory 
+  'stylesheet'	=> 'style.php',  // maim stylsheet to include in template files
 );

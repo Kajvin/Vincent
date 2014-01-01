@@ -7,7 +7,8 @@
   <link rel='stylesheet' href='<?=$stylesheet?>'/>
    <script>var __adobewebfontsappname__ = "code"</script>
 <script src="http://use.edgefonts.net/shojumaru:n4:all.js"></script>
-    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+<!-- <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+-->
 </head>
  <body>
   <div id='wrap-header'>
