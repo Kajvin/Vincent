@@ -52,7 +52,7 @@ label{font-size:smaller;}
  
 html{background-color:@bgcolor1;}
 body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
-  &:hover{background:#fff url(grid_12_60_20.png) repeat-y center top;}
+// &:hover{background:#fff url(grid_12_60_20.png) repeat-y center top;}
 }
 /**  
 *The header area. 
@@ -60,7 +60,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 */ 
 
 .tablecell() {display:table-cell;vertical-align:middle;text-align:center; }
-#outer-wrap-header{height:@magic-number*4;margin-top:@magic-number/2;margin-bottom:@magic-number/2;  }
+#outer-wrap-header{height:@magic-number*4;margin-top:@magic-number/2;margin-bottom:@magic-number;  }
 #inner-wrap-header{.wrap();}
 #header{.column(12);}
 
@@ -85,20 +85,20 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 	background-image: -webkit-linear-gradient(334deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
 	background-image: linear-gradient(116deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
 	color: #DFDE15;
-	padding-right: 51px;
+	padding-right: @magic-number;
 .site-logo {.tablecell()} 
 .site-title {.tablecell();
 	font-family: 'Shojumaru', cursive;
 	line-height: 0;
 	font-size: 2.5em;
-	padding-left: @magicc-number-2;
+	padding-left: @magicc-number;
 	color: #1349F4;
 	text-shadow: #ccc 4px -4px 4px;
 	 a{text-decoration:none;}
 }
 .site-slogan {.tablecell();
 	font-family: 'Shojumaru', cursive;
-	padding-left: 22px;
+	padding-left:  @magicc-number;
 	font-style: italic;
 	color: #F0F611;
 	padding-right: 0px;
@@ -112,7 +112,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 */
 #outer-wrap-flash{}
 #inner-wrap-flash{.wrap();height:@magic-number*3;margin-bottom:@magic-number;}
-#flash{.column(12);background-color:@bgtest;height:100%;}
+#flash{.column(12);height:100%;}
 
 
 /** --------------------------------------------------------------
@@ -125,7 +125,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 
 #featured-first,
 #featured-middle,
-#featured-last{.column(4);background-color:@bgtest;height:100%;}
+#featured-last{.column(4);height:100%;}
 
 
 /** --------------------------------------------------------------
@@ -136,8 +136,8 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 #inner-wrap-main{.wrap;margin-bottom:@magic-number; padding-bottom:1em;}
 #main{}
 
-#primary{.column(8);background-color:@bgtest;}
-#sidebar{.column(4);background-color:@bgtest;}
+#primary{.column(8);}
+#sidebar{.column(4);}
 
 
 /** --------------------------------------------------------------
@@ -150,7 +150,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 
 #triptych-first,
 #triptych-middle,
-#triptych-last{.column(4);background-color:@bgtest;height:100%;}
+#triptych-last{.column(4);height:100%;}
 
 
 /** --------------------------------------------------------------
