@@ -108,4 +108,5 @@ $wi->config['controllers'] = array(
 $wi->config['theme'] = array(
   'name'    	=> 'grid',		 //The name of the theme in theme directory 
   'stylesheet'	=> 'style.php',  // maim stylsheet to include in template files
+  'template_file'   => 'index.tpl.php',   // Default template file, else use default.tpl.php
 );

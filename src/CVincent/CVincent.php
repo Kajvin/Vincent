@@ -122,9 +122,7 @@ class CVincent implements ISingleton {
     $this->session->StoreInSession();
   
     // Is theme enabled?
-    if(!isset($this->config['theme'])) {
-      return;
-    }
+    if(!isset($this->config['theme'])) { return; }
     
     // Get the paths and settings for the theme
     $themeName         = $this->config['theme']['name'];
@@ -145,7 +143,8 @@ class CVincent implements ISingleton {
     // Extract $wi->data to own variables and handover to the template file
     extract($this->data);      
     extract($this->views->GetData());      
-    include("{$themePath}/default.tpl.php");
+     $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
+    include("{$themePath}/{$templateFile}");
   }
 
 }

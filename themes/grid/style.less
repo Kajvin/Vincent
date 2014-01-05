@@ -2,116 +2,29 @@
  * Description: Grid theme for Vincent based on less, lessphp and semantic.gs.
  */
 
+/** --------------------------------------------------------------
+* semantic.gs
+*/
+@import url(semantic.gs/stylesheets/less/grid.less);
+
 /**
  * Settings
  */
 @bgcolor1: #eee;
 @bgcolor2: #fff;
+@bgtest:hsla(0,0%,90%,0.5);
 @color: #333;
 @font: 1em Verdana, Arial, Helvetica, sans-serif;
 
 
-/**
- * Structure
- */
-html{background-color:@bgcolor1;}
-body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;}
+/* Wrap elements to site width in grid layout*/
+.wrap() {width:@total-width;margin:0 auto;border:1px solid #999; border-radius: 10px;.clearfix();}
 
-#wrap-header {}
-#wrap-main {}
-#wrap-footer {border-top:1px solid #ccc;background-color:@bgcolor1;}
-/*Default header*/
-/*#header,
-#main,
-#footer {margin:0 auto;width:970px;padding:8px;}
-#main,
-#footer {margin-bottom:16px;}*/
-
-/*Stylad header default above in the comment*/
-#header,
-#main,
-#footer {
-  margin:8px auto;
-  padding:1em;
-  width:970px;
-  background-color:@bgcolor2;
-  border:1px solid #999;
-  border-radius: 10px;
-} 
-
-#header,
-#main {background-color:#fff;}
-#main {min-height:300px;}
-#footer {font-size:0.80em;color:#666;background-color:@bgcolor1;}
+@magic-number:22px;
 
 
 /**
- * Login menu
- */
-#login-menu{float:right;font-size:smaller;
-  img.gravatar{vertical-align:middle;}
-  a{text-decoration:none;}
-  a:hover{text-decoration:underline;}
-}
-
-
-/**
- * Banner
- */
-/*#banner {display:table;margin-bottom:10px;}*/
-#banner {
-	display: table;
-	margin-bottom: 10px;
-	margin-top:20px;
-	background-image: -webkit-linear-gradient(334deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
-	background-image: linear-gradient(116deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
-	color: #DFDE15;
-	padding-right: 51px;
- }
-.site-logo,
-.site-title,
-.site-slogan {display:table-cell;width:inherit;vertical-align:middle;text-align:left;}
-
-.site-logo {}
-.site-title {
-	font-family: 'Shojumaru', cursive;
-	line-height: 0;
-	font-size: 3em;
-	padding-left: 20px;
-	color: #1349F4;
-	text-shadow: #ccc 4px -4px 4px;
-	
-}
-.site-slogan {
-	font-family: 'Shojumaru', cursive;
-	padding-left: 22px;
-	font-style: italic;
-	color: #F0F611;
-	padding-right: 0px;
-	text-shadow: #ccc 4px -4px 4px;
-}
-.site-title  {font-size:4em;font-weight:bold;}
-.site-slogan {font-size:1.5em;}
-
-.site-title a {text-decoration:none;color:inherit;}
-.site-title a:hover {text-decoration:none;color:inherit;}
-
-
-/**
- * Links
- */
-.hover(){text-decoration:none;color:#5C0A0A;}
-a{color:inherit;
-  &:link{}
-  &:visited{}
-  &:hover{.hover()}
-  &:focus{.hover()}
-  &:active{}
-}
-
-
-/**
- * Headings
+ * Typografi
  */
 h1{border-bottom:3px double #ccc;padding-bottom:4px;}
 h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
@@ -131,6 +44,151 @@ label{font-size:smaller;}
   input[type=text]{width:30em;}
   textarea{width:40em;height:15em;}
 }
+
+
+/**
+ * HTML & Body
+ */
+ 
+html{background-color:@bgcolor1;}
+body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
+  &:hover{background:#fff url(grid_12_60_20.png) repeat-y center top;}
+}
+/**  
+*The header area. 
+*
+*/ 
+
+.tablecell() {display:table-cell;vertical-align:middle;text-align:center; }
+#outer-wrap-header{height:@magic-number*4;margin-top:@magic-number/2;margin-bottom:@magic-number/2;  }
+#inner-wrap-header{.wrap();}
+#header{.column(12);}
+
+/**
+ * Login menu
+ */
+#login-menu{float:right;font-size:smaller;
+  img.gravatar{vertical-align:middle;}
+  a{text-decoration:none;}
+  a:hover{text-decoration:underline;}
+}
+
+
+/**
+ * Banner
+ */
+/*#banner {display:table;margin-bottom:10px;}*/
+#banner {
+	display: table;
+	margin-bottom: @magic-number/2;
+	margin-top: @magic-number/2;
+	background-image: -webkit-linear-gradient(334deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
+	background-image: linear-gradient(116deg,rgba(255,255,255,1.00) 0%,rgba(0,79,41,1.00) 100%);
+	color: #DFDE15;
+	padding-right: 51px;
+.site-logo {.tablecell()} 
+.site-title {.tablecell();
+	font-family: 'Shojumaru', cursive;
+	line-height: 0;
+	font-size: 2.5em;
+	padding-left: @magicc-number-2;
+	color: #1349F4;
+	text-shadow: #ccc 4px -4px 4px;
+	 a{text-decoration:none;}
+}
+.site-slogan {.tablecell();
+	font-family: 'Shojumaru', cursive;
+	padding-left: 22px;
+	font-style: italic;
+	color: #F0F611;
+	padding-right: 0px;
+	text-shadow: #ccc 4px -4px 4px;
+}
+}
+
+/** --------------------------------------------------------------
+* The flash area.
+*
+*/
+#outer-wrap-flash{}
+#inner-wrap-flash{.wrap();height:@magic-number*3;margin-bottom:@magic-number;}
+#flash{.column(12);background-color:@bgtest;height:100%;}
+
+
+/** --------------------------------------------------------------
+* The featured area.
+*
+*/
+#outer-wrap-featured{}
+#inner-wrap-featured{.wrap;height:@magic-number*5;margin-bottom:@magic-number;}
+#featured{}
+
+#featured-first,
+#featured-middle,
+#featured-last{.column(4);background-color:@bgtest;height:100%;}
+
+
+/** --------------------------------------------------------------
+* The main content area.
+*
+*/
+#outer-wrap-main{}
+#inner-wrap-main{.wrap;margin-bottom:@magic-number; padding-bottom:1em;}
+#main{}
+
+#primary{.column(8);background-color:@bgtest;}
+#sidebar{.column(4);background-color:@bgtest;}
+
+
+/** --------------------------------------------------------------
+* The triptych area.
+*
+*/
+#outer-wrap-triptych{}
+#inner-wrap-triptych{.wrap();height:@magic-number*5;margin-bottom:@magic-number;}
+#triptych{height:inherit;}
+
+#triptych-first,
+#triptych-middle,
+#triptych-last{.column(4);background-color:@bgtest;height:100%;}
+
+
+/** --------------------------------------------------------------
+* The footer column area.
+*
+*/
+#outer-wrap-footer-column{background-color:@bgtest;border-top:1px solid #bbb;}
+#inner-wrap-footer-column{.wrap();height:@magic-number*5;padding-bottom:@magic-number;}
+#footer{height:inherit;}
+
+#footer-column-one,
+#footer-column-two,
+#footer-column-three,
+#footer-column-four{.column(3);font-size:0.9em;margin-top:1em;height:100%;
+background-color:lighten(@bgtest,10%);}
+
+
+/** --------------------------------------------------------------
+* The footer area.
+*
+*/
+#outer-wrap-footer{background-color:@bgtest;}
+#inner-wrap-footer{.wrap();}
+#footer{.column(12);font-size:0.80em;color:#666;padding-bottom:@magic-number;}
+
+
+/**
+ * Links
+ */
+.hover(){text-decoration:none;color:#5C0A0A;}
+a{color:inherit;
+  &:link{}
+  &:visited{}
+  &:hover{.hover()}
+  &:focus{.hover()}
+  &:active{}
+}
+
 
 
 /**
