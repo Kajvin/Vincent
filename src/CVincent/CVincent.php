@@ -141,9 +141,12 @@ class CVincent implements ISingleton {
     }
 
     // Extract $wi->data to own variables and handover to the template file
-    extract($this->data);      
-    extract($this->views->GetData());      
-     $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
+     extract($this->data);      
+    extract($this->views->GetData());
+    if(isset($this->config['theme']['data'])) {
+      extract($this->config['theme']['data']);
+    }
+    $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
     include("{$themePath}/{$templateFile}");
   }
 

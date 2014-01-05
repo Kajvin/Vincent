@@ -115,4 +115,16 @@ $wi->config['theme'] = array(
     'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
     'footer',
   ),
+  
+   // Add static entries for use in the template file. 
+  'data' => array(
+    'header' => 'Vincent',
+    'slogan' => 'A PHP-based MVC-inspired CMF',
+    'favicon' => 'logga_phpmvh_icon.png',
+    'logo' => 'logga_phpmvh_thumb.png',
+    'logo_width'  => 60,
+    'logo_height' => 70,
+    'footer' => '<p>Footer: &copy; Vincent by Kajvin (rowe12@student.bth.se)</p>',
+  ),
+
 );
