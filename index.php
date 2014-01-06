@@ -6,6 +6,7 @@
  * @package VincentCore
  */
  
+ //------------------------------------
 //
 // PHASE: BOOTSTRAP
 //
@@ -16,13 +17,16 @@ require(VINCENT_INSTALL_PATH.'/src/bootstrap.php');
 
 $wi = CVincent::Instance();
 
+
+//----------------------------------------------
 //
 // PHASE: FRONTCONTROLLER ROUTE
 //
 $wi->FrontControllerRoute();
 
-
-//
+//____________________________________
 // PHASE: THEME ENGINE RENDER
 //
+
+
 $wi->ThemeEngineRender();

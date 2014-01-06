@@ -36,6 +36,8 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
   public function offsetGet($offset) { return isset($this->profile[$offset]) ? $this->profile[$offset] : null; }
 
 
+
+  
   /**
    * Implementing interface IHasSQL. Encapsulate all SQL used by this class.
    *
