@@ -1,13 +1,15 @@
 Vincent, the site directory
-====================================
-More text then Vincent is ready
+=================================================================================================================
+
+Some people would call this the application directory, I call it the site directory. It should contain the code to actually make a working website. When Vincent is deployed, and extended into a website, then this directory should be the only place where content changes.
 
 The config.php
-====================================
+===============================================================================================================
 
-The config.php holds the configuration for the site
+The file config.php holds the configuration for this site.
 
 The src-directory
-==================================
+===============================================================================================================
 
-Directory srs for classes for addon controllers, models and more...
+The directory src contains classes for addon controllers, models and more. The autoloader looks here first for a class file, before it moves on to look in 
+VINCENT_INSTALL_PATH/src. It is therefore possible to replace core-classes with your own version, just use same classname and place it here.

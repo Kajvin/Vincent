@@ -2,8 +2,18 @@
 
 
 <h2>About</h2>
-<p><strong>Module Manager</strong> displays information on modules and enable managing of all Lydia modules. Lydia is made up of modules. Each module
+<p><strong>Module Manager</strong> displays information on modules and enable managing of all Vincent modules. Vincent is made up of modules. Each module
 has its own subdirectory in the <code>src</code>-directory.</p>
+
+
+<h2>Manage Vincent modules</h2>
+<p>A module can implement the interface <code>IModule</code>
+which makes it a manageable module. Vincent provides a administrating interface for these
+modules. You can perform the following actions through this interface:</p>
+
+<ul>
+  <li><a href='<?=create_url('module/install')?>'>install</a></li>
+</ul>
 
 
 <h2>Enabled controllers</h2>

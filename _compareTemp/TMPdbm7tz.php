@@ -115,7 +115,8 @@ $wi->config['theme'] = array(
     'primary','sidebar','triptych-first','triptych-middle','triptych-last',
     'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
     'footer',
-  ),  
+  ),
+  
    // Add static entries for use in the template file. 
   'data' => array(
     'header' => 'Vincent',
@@ -126,4 +127,5 @@ $wi->config['theme'] = array(
     'logo_height' => 70,
     'footer' => '<p>Footer: &copy; Vincent by Kajvin (rowe12@student.bth.se)</p>',
   ),
+
 );
