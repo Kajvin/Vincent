@@ -2,7 +2,7 @@
 /**
  * A form for creating a new user.
  * 
- * @package LydiaCore
+ * @package VincentCore
  */
 class CFormUserCreate extends CForm {
 

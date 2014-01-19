@@ -1,9 +1,9 @@
 <?php
 /**
-* A user controller to manage content.
-* 
-* @package VincentCore
-*/
+ * A user controller to manage content.
+ * 
+ * @package VincentCore
+ */
 class CCContent extends CObject implements IController {
 
 
@@ -42,7 +42,7 @@ class CCContent extends CObject implements IController {
     }
     
     $title = isset($id) ? 'Edit' : 'Create';
-    $this->views->$this->views->SetTitle("$title content: ".htmlEnt($content['title']))
+    $this->views->SetTitle("$title content: ".htmlEnt($content['title']))
                 ->AddInclude(__DIR__ . '/edit.tpl.php', array(
                   'user'=>$this->user, 
                   'content'=>$content, 
@@ -69,4 +69,4 @@ class CCContent extends CObject implements IController {
   }
   
 
-}
+} 

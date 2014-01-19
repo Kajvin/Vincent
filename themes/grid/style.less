@@ -194,7 +194,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 	color: #DFDE15;
 	padding-right: @magic-number;
 #site-logo {.tablecell(); margin-right:2em;} 
-.site-title {.tablecell();
+#site-title {.tablecell();
 	font-family: 'Shojumaru', cursive;
 	line-height: 0;
 	font-size: 3.5em;
@@ -202,7 +202,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 	text-shadow: #ccc 4px -4px 4px;
 	 a{text-decoration:none;}
 }
-.site-slogan {.tablecell();
+#site-slogan {.tablecell();
 	font-family: 'Shojumaru', cursive;
 	padding-left:  @magic-number/2;
 	font-style: italic;
@@ -212,6 +212,24 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;font:@font;
 	text-shadow: #ccc 4px -4px 4px;
 }
 }
+
+
+
+/** --------------------------------------------------------------
+ * Navbar
+ */
+#navbar{
+  ul.menu{list-style-type:none;padding:2px 8px;margin:0px;
+    li{padding:0;margin:10px;display:inline;
+      a{padding:6px 8px;text-decoration:none;border:2px solid transparent;
+        &:hover{background:#ddd;border:2px solid #999;}
+        &.selected{background:#ccc;border:2px solid #999;}
+      }
+    }
+  }
+}
+
+
 
 /** --------------------------------------------------------------
 * The flash area.
